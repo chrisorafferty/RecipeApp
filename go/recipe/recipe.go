@@ -1,4 +1,4 @@
-package main
+package recipe
 
 import (
 	"encoding/json"
@@ -8,13 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type recipe struct {
-	Title       string
-	Ingredients []string
-	Steps       []string
-}
-
-func getRecipe(ctx *gin.Context) {
+func GetRecipe(ctx *gin.Context) {
 	recipe := recipe{
 		Title: "Asian pork rice",
 		Ingredients: []string{
@@ -44,19 +38,4 @@ func getRecipe(ctx *gin.Context) {
 	fmt.Printf(string(out))
 
 	ctx.JSON(http.StatusOK, recipe)
-}
-
-func main() {
-	router := gin.Default()
-
-	// Create API route group
-	api := router.Group("/api")
-	{
-		// Add /hello GET route to router and define route handler function
-		api.GET("/recipe", getRecipe)
-	}
-
-	router.NoRoute(func(ctx *gin.Context) { ctx.JSON(http.StatusNotFound, gin.H{}) })
-
-	router.Run(":8090")
 }

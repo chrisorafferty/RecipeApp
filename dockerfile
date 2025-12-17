@@ -2,13 +2,13 @@ FROM golang:1.25-alpine
 
 WORKDIR /app
 
-COPY go.mod ./
+COPY go.mod go.sum ./
 
 RUN go mod download
 
-COPY *.go ./
+COPY . .
 
-RUN go build -o recipe-app
+RUN go build -o recipe-app go/main.go
 
 # Document which port will be used
 EXPOSE 8090

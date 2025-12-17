@@ -8,5 +8,9 @@
 - visit <serverip>:8090/api/recipe
 
 ### Running go server locally
-- Run `go run main.go`
+- Run `go run go/main.go`
 - visit localhost:8090/api/recipe
+
+### Running frontend locally
+- Run `npm run dev`
+- visit localhost:5173
